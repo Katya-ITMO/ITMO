@@ -1,0 +1,183 @@
+package laba4;
+
+import enviroment.Bird;
+import enviroment.Cat;
+import enviroment.Evil;
+import enviroment.Human1;
+import enviroment.Human2;
+import enviroment.NoHuman;
+import enviroment.NoObj;
+import enviroment.Obj;
+import enviroment.Parrot;
+import enviroment.Savage;
+
+import java.util.ArrayList;
+
+import enums.Feeling;
+import enums.Period;
+import enums.Place;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Human1 narrator = new Human1("рассказчик", true, Place.ISLAND);
+		Human2 giant = new Human2("древний великан", true, Place.CAVE);
+		Human2 human = new Human2("человек", true, Place.NO);
+		Savage savages = new Savage("дикари", true, Place.ISLAND);
+		NoHuman oldGoat = new NoHuman("старый козёл", false, Place.CAVE, true);
+		NoObj stench = new NoObj("зловоние");
+		NoObj entertainment = new NoObj("маленькие развлечения");
+		Parrot Popka = new Parrot("Попка", true, Place.NO, true, false);
+		Parrot parrot = new Parrot("попугаи", true, Place.BRAZIL, true, true);
+		Human1 englishman = new Human1("англичанин", true, Place.NO);
+		Human2 devil = new Human2("дьявол", true, Place.NO);
+		NoHuman dog = new NoHuman("пёс", true, Place.NO, false);
+		Cat cats = new Cat("кошки", true, Place.NO, true);
+		NoHuman goats = new NoHuman("козлята", true, Place.NO, true);
+		Bird birds = new Bird("морские птицы", true, Place.FOREST, true);
+		
+		Human2 reader = new Human2("читатель", true, Place.NO);
+		Evil evil = new Evil("зло");
+		NoObj badluck = new NoObj("несчастья");
+		Obj fire = new Obj("огонь", 2);
+		ArrayList<String> infData = new ArrayList<String>();
+		infData.add("23 год");
+		ArrayList<String> infWeather = new ArrayList<String>();
+		infWeather.add("жаркая");
+		ArrayList<String> infTime1 = new ArrayList<String>();
+		infTime1.add("рассвет");
+		String[] addData  = new String[] {"зима", "декабрь - время южного солнцестояния"};
+		Enviroment data = new Enviroment("дата", infData);
+		Enviroment time1 = new Enviroment("время", infTime1);
+		Enviroment weather = new Enviroment("погода", infWeather);
+		
+		Obj bread = new Obj("хлеб", -1);
+		Obj ladder = new Obj("лестница", -1);
+		Obj gun1 = new Obj("пушка", -1);
+		Obj gun2 = new Obj("пистолет", -1);
+		Obj tube = new Obj("подзорная труба", -1);
+		Obj meal = new Obj("обед из человечьего мяса", -1);
+		ArrayList<String> infTime2 = new ArrayList<String>();
+		infTime2.add("2 часа");
+		Enviroment time2 = new Enviroment("время", infTime2);
+		
+		narrator.imagine(giant);
+		giant.live(-1);
+		human.forbiddenPlace(Place.CAVE);
+		savages.search(narrator);
+		savages.forbiddenPlace(Place.HOUSE);
+		oldGoat.live(-1);
+		narrator.destroy(Period.NO, stench);
+		narrator.dig();
+		narrator.bury(oldGoat);
+		data.printInf();
+		narrator.live(-1);
+		narrator.feel(Feeling.FEAR);
+		savages.disturb(narrator);
+		narrator.makeUp(entertainment);
+		narrator.teach(Popka);
+		Popka.speak("");
+		narrator.hear(Popka);
+		Popka.live(26);
+		parrot.live(100);
+		Popka.fly();
+		Popka.call();
+		englishman.move(2, Period.NO, Place.ISLAND);
+		englishman.hear(Popka);
+		englishman.imagine(devil);
+		dog.live(16);
+		dog.friend();
+		dog.changeStatus();
+		dog.live(-1);
+		cats.spawn();
+		narrator.shoot(cats);
+		cats.eat();
+		cats.changeStatus();
+		cats.live(-1);
+		cats.changeStatus();
+		narrator.shoot(cats);
+		cats.move(10, Period.NO, Place.FOREST);
+		narrator.tame(cats);
+		cats.spawn();
+		narrator.kill(cats);
+		narrator.tame(goats);
+		parrot.speak("");
+		parrot.call();
+		narrator.wasteTime();
+		narrator.tame(birds);
+		birds.fly();
+		narrator.plantTrees();
+		narrator.changeLocation(Place.NO);
+		narrator.hide(savages);
+		birds.live(-1);
+		birds.spawn();
+		narrator.feel(Feeling.JOY);
+		narrator.feel(Feeling.CALM);
+		savages.live(-1);
+		narrator.feel(Feeling.FEAR);
+		
+		reader.read();
+		reader.notice();
+		human.feel(Feeling.FEAR);
+		evil.repeat(3, human);
+		evil.seem();
+		evil.destroy(Period.OFTEN, badluck);
+		narrator.example();
+		data.addStr(addData);
+		data.printInf();
+		weather.printInf();
+		narrator.work(Period.CONSTANTLY, Place.FIELD);
+		narrator.changeLocation(Place.HOUSE);
+		narrator.move(5, Period.ONES, Place.NO);
+		time1.printInf();
+		narrator.seeObj(fire);
+		narrator.feel(Feeling.SURPRISE);
+		fire.move(0, Period.NO, Place.MYSHORE);
+		fire.printDist(Place.HOUSE);
+		narrator.feel(Feeling.SURPRISE);
+		savages.disembark(Period.USUALLY, Place.OTHERSHORE);
+		
+		narrator.changeLocation(Place.FOREST);
+		narrator.hide(narrator);
+		narrator.bide();
+		narrator.feel(Feeling.WORRY);
+		narrator.feel(Feeling.FEAR);
+		savages.seeObj(bread);
+		savages.guess();
+		narrator.changeLocation(Place.ISLAND);
+		narrator.live(-1);
+		savages.changeLocation(Place.ISLAND);
+		savages.search(narrator);
+		narrator.changeLocation(Place.NO);
+		narrator.move(5, Period.NO, Place.HOUSE);
+		narrator.raise(ladder);
+		narrator.noTracks();
+		narrator.defense();
+		narrator.charge(gun1);
+		gun1.move(0, Period.NO, Place.WALL);
+		narrator.charge(gun2);
+		narrator.changeLocation(Place.NO);
+		narrator.move(1, Period.NO, Place.HOUSE);
+		time2.printInf();
+		narrator.noScouts();
+		narrator.changeLocation(Place.NO);
+		narrator.move(1, Period.NO, Place.HOUSE);
+		narrator.feel(Feeling.TIRED);
+		narrator.changeLocation(Place.NO);
+		narrator.move(5, Period.NO, Place.MOUNT);
+		narrator.raise(ladder);
+		narrator.changeLocation(Place.NO);
+		narrator.move(2, Period.NO, Place.TOP);
+		narrator.raise(tube);
+		narrator.changeLocation(Place.NO);
+		narrator.move(0, Period.NO, Place.TOP);
+		narrator.seeAnimal(savages);
+		savages.changeLocation(Place.NO);
+		savages.move(1, Period.NO, Place.BONFIRE);
+		weather.printInf();
+		savages.cook(meal);
+		
+	}
+
+}
